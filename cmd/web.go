@@ -49,7 +49,10 @@ func runWeb(ctx *cli.Context) {
 		setting.CustomConf = ctx.String("config")
 		log.Info("加载自定义配置文件：%s", setting.CustomConf)
 	}
+
+	//加载配置文件
 	setting.NewContext()
+
 	models.NewContext()
 
 	m := macaron.New()
