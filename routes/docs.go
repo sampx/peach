@@ -24,9 +24,9 @@ import (
 	"github.com/Unknwon/com"
 	"github.com/Unknwon/log"
 
-	"github.com/peachdocs/peach/models"
-	"github.com/peachdocs/peach/pkg/context"
-	"github.com/peachdocs/peach/pkg/setting"
+	"github.com/sampx/peach/models"
+	"github.com/sampx/peach/pkg/context"
+	"github.com/sampx/peach/pkg/setting"
 )
 
 func renderEditPage(ctx *context.Context, documentPath string) {

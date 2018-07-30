@@ -20,8 +20,8 @@ import (
 	"encoding/hex"
 	"strings"
 
-	"github.com/peachdocs/peach/models"
-	"github.com/peachdocs/peach/pkg/context"
+	"github.com/sampx/peach/models"
+	"github.com/sampx/peach/pkg/context"
 )
 
 func authRequired(ctx *context.Context) {
@@ -45,6 +45,7 @@ func encodeMd5(str string) string {
 	return hex.EncodeToString(m.Sum(nil))
 }
 
+// Protect docs todo
 func Protect(ctx *context.Context) {
 	if !models.Protector.HasProtection {
 		return

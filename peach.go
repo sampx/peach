@@ -21,8 +21,8 @@ import (
 
 	"github.com/urfave/cli"
 
-	"github.com/peachdocs/peach/cmd"
-	"github.com/peachdocs/peach/pkg/setting"
+	"github.com/sampx/peach/cmd"
+	"github.com/sampx/peach/pkg/setting"
 )
 
 const APP_VER = "0.9.6.0616"

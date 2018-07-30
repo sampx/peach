@@ -12,6 +12,9 @@ run:
 bindata:
 	go-bindata -o=pkg/bindata/bindata.go -ignore="\\.DS_Store|README|config.codekit|.less" -pkg=bindata templates/... conf/... public/...
 
+bindata-debug:
+	go-bindata -debug -o=pkg/bindata/bindata.go -ignore="\\.DS_Store|README|config.codekit|.less" -pkg=bindata templates/... conf/... public/...
+
 release:
 	env GOOS=darwin GOARCH=amd64 go build -o peach; tar czf darwin_amd64.tar.gz peach
 	env GOOS=linux GOARCH=amd64 go build -o peach; tar czf linux_amd64.tar.gz peach

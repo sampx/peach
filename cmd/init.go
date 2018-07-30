@@ -24,9 +24,10 @@ import (
 	"github.com/urfave/cli"
 	"gopkg.in/ini.v1"
 
-	"github.com/peachdocs/peach/pkg/bindata"
+	"github.com/sampx/peach/pkg/bindata"
 )
 
+// New 命令用例创建一个新的文档网站
 var New = cli.Command{
 	Name:   "new",
 	Usage:  "Initialize a new Peach project",

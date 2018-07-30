@@ -20,13 +20,15 @@ import (
 
 	"gopkg.in/macaron.v1"
 
-	"github.com/peachdocs/peach/pkg/setting"
+	"github.com/sampx/peach/pkg/setting"
 )
 
+// Context doc todo
 type Context struct {
 	*macaron.Context
 }
 
+// Contexter doc todo
 func Contexter() macaron.Handler {
 	return func(c *macaron.Context) {
 		ctx := &Context{

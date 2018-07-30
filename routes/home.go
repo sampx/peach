@@ -20,11 +20,12 @@ import (
 
 	"github.com/Unknwon/com"
 
-	"github.com/peachdocs/peach/models"
-	"github.com/peachdocs/peach/pkg/context"
-	"github.com/peachdocs/peach/pkg/setting"
+	"github.com/sampx/peach/models"
+	"github.com/sampx/peach/pkg/context"
+	"github.com/sampx/peach/pkg/setting"
 )
 
+// Home doc todo
 func Home(ctx *context.Context) {
 	if !setting.Page.HasLandingPage {
 		ctx.Redirect(setting.Page.DocsBaseURL)
@@ -34,6 +35,7 @@ func Home(ctx *context.Context) {
 	ctx.HTML(200, "home")
 }
 
+// Pages doc todo
 func Pages(ctx *context.Context) {
 	toc := models.Tocs[ctx.Locale.Language()]
 	if toc == nil {
@@ -67,6 +69,7 @@ func Pages(ctx *context.Context) {
 	NotFound(ctx)
 }
 
+// NotFound docs todo
 func NotFound(ctx *context.Context) {
 	ctx.Data["Title"] = "404"
 	ctx.HTML(404, "404")

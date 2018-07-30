@@ -19,17 +19,19 @@ import (
 	"net/http"
 
 	"github.com/Unknwon/log"
+
 	"github.com/go-macaron/i18n"
 	"github.com/go-macaron/pongo2"
 	"github.com/urfave/cli"
 	"gopkg.in/macaron.v1"
 
-	"github.com/peachdocs/peach/models"
-	"github.com/peachdocs/peach/pkg/context"
-	"github.com/peachdocs/peach/pkg/setting"
-	"github.com/peachdocs/peach/routes"
+	"github.com/sampx/peach/models"
+	"github.com/sampx/peach/pkg/context"
+	"github.com/sampx/peach/pkg/setting"
+	"github.com/sampx/peach/routes"
 )
 
+// Web docs todo
 var Web = cli.Command{
 	Name:   "web",
 	Usage:  "Start Peach web server",
@@ -40,13 +42,15 @@ var Web = cli.Command{
 }
 
 func runWeb(ctx *cli.Context) {
+
+	log.Info("PeachDoc %s", setting.AppVer)
+
 	if ctx.IsSet("config") {
 		setting.CustomConf = ctx.String("config")
+		log.Info("加载自定义配置文件：%s", setting.CustomConf)
 	}
 	setting.NewContext()
 	models.NewContext()
-
-	log.Info("Peach %s", setting.AppVer)
 
 	m := macaron.New()
 	if !setting.ProdMode {

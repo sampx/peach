@@ -31,7 +31,7 @@ import (
 	"github.com/russross/blackfriday"
 	"gopkg.in/ini.v1"
 
-	"github.com/peachdocs/peach/pkg/setting"
+	"github.com/sampx/peach/pkg/setting"
 )
 
 type Node struct {

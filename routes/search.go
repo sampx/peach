@@ -15,9 +15,9 @@
 package routes
 
 import (
-	"github.com/peachdocs/peach/models"
-	"github.com/peachdocs/peach/pkg/context"
-	"github.com/peachdocs/peach/pkg/setting"
+	"github.com/sampx/peach/models"
+	"github.com/sampx/peach/pkg/context"
+	"github.com/sampx/peach/pkg/setting"
 )
 
 func Search(ctx *context.Context) {
