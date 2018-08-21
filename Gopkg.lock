@@ -3,102 +3,142 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:df284f67687dbac039656a8d5272aa2a5ccd87a8bb34e8118ef5094f8b301034"
   name = "github.com/Unknwon/com"
   packages = ["."]
+  pruneopts = "UT"
   revision = "da59b551951d50441ca26b7a8cd81317f34df87f"
 
 [[projects]]
   branch = "master"
+  digest = "1:bd9a1730dc16cc1f04700999f3d324204e0a1971920e7b2f7989927a7467537e"
   name = "github.com/Unknwon/i18n"
   packages = ["."]
+  pruneopts = "UT"
   revision = "b64d336589669d317928070e70ba0ae558f16633"
 
 [[projects]]
   branch = "master"
+  digest = "1:3c95d403f60fb73d00206117fe496dc2dfaeaa8e9ce15d8107830d4d0c4a64fb"
   name = "github.com/Unknwon/log"
   packages = ["."]
+  pruneopts = "UT"
   revision = "e617c87089d3ff2ae05098eac8c9386069cd8461"
 
 [[projects]]
   branch = "master"
+  digest = "1:4ec4a124a6da7c5498d88809a3e4279496278b6982bb74e5ace4904859f5456a"
   name = "github.com/flosch/pongo2"
   packages = ["."]
+  pruneopts = "UT"
   revision = "67f4ff8560dfa2b00920118f228c0a2f68760631"
 
 [[projects]]
   branch = "master"
+  digest = "1:7a8f896db16771b51b26b0954e81093c83c82c52f55bf4248992ec4c25642064"
   name = "github.com/go-macaron/i18n"
   packages = ["."]
+  pruneopts = "UT"
   revision = "ef57533c3b0fc2d8581deda14937e52f11a203ab"
 
 [[projects]]
   branch = "master"
+  digest = "1:bdb17865b13e720add16eaa212872b4306c8521f367c7a7ff2c10cef1e7afdb1"
   name = "github.com/go-macaron/inject"
   packages = ["."]
+  pruneopts = "UT"
   revision = "d8a0b8677191f4380287cfebd08e462217bac7ad"
 
 [[projects]]
   branch = "master"
+  digest = "1:fbf9e59e0045610d5b5c2967f60d761102457d8669406cdf92826ef71785b08c"
   name = "github.com/go-macaron/pongo2"
   packages = ["."]
+  pruneopts = "UT"
   revision = "28e8bf81cad72bee3aa5fef3d2fd7210b9b97b3f"
 
 [[projects]]
   branch = "master"
+  digest = "1:53bd4347b151fcbedcdda527f7ebf4924f0e21d672131812f857175d8c7a1051"
   name = "github.com/juju/errors"
   packages = ["."]
+  pruneopts = "UT"
   revision = "812b06ada1776ad4dd95d575e18ffffe3a9ac34a"
 
 [[projects]]
   branch = "master"
+  digest = "1:a925d1ff639de6476f57a70803264f3a21439464fcc4bafa438c800b304c9441"
   name = "github.com/mschoch/blackfriday-text"
   packages = ["."]
+  pruneopts = "UT"
   revision = "f4ea365e801b9d91b76da776f785a80e5ddf9a36"
 
 [[projects]]
+  digest = "1:8bc629776d035c003c7814d4369521afe67fdb8efc4b5f66540d29343b98cf23"
   name = "github.com/russross/blackfriday"
   packages = ["."]
+  pruneopts = "UT"
   revision = "55d61fa8aa702f59229e6cff85793c22e580eaf5"
   version = "v1.5.1"
 
 [[projects]]
+  digest = "1:b24d38b282bacf9791408a080f606370efa3d364e4b5fd9ba0f7b87786d3b679"
   name = "github.com/urfave/cli"
   packages = ["."]
+  pruneopts = "UT"
   revision = "cfb38830724cc34fedffe9a2a29fb54fa9169cd1"
   version = "v1.20.0"
 
 [[projects]]
   branch = "master"
+  digest = "1:f92f6956e4059f6a3efc14924d2dd58ba90da25cc57fe07ae3779ef2f5e0c5f2"
   name = "golang.org/x/crypto"
   packages = ["pbkdf2"]
+  pruneopts = "UT"
   revision = "c126467f60eb25f8f27e5a981f32a87e3965053f"
 
 [[projects]]
+  digest = "1:17ad89bd57485e11f306d41b703f53089fb0803682707b21fe9b3b29467d37a0"
   name = "golang.org/x/text"
   packages = [
     "internal/gen",
     "internal/tag",
     "language",
-    "unicode/cldr"
+    "unicode/cldr",
   ]
+  pruneopts = "UT"
   revision = "f21a4dfb5e38f5895301dc265a8def02365cc3d0"
   version = "v0.3.0"
 
 [[projects]]
+  digest = "1:fe8a03a8222d5b913f256972933d26d24ad7c8286692a42943bc01633cc8fce3"
   name = "gopkg.in/ini.v1"
   packages = ["."]
+  pruneopts = "UT"
   revision = "358ee7663966325963d4e8b2e1fbd570c5195153"
   version = "v1.38.1"
 
 [[projects]]
+  digest = "1:2b9d0210e4b76b44216180f37b47cc145827ee628e788cea142483eb958a2b9d"
   name = "gopkg.in/macaron.v1"
   packages = ["."]
+  pruneopts = "UT"
   revision = "c1be95e6d21e769e44e1ec33cec9da5837861c10"
   version = "v1.3.1"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "bdc0c3043c6c728d6dfec22a434278a6f31e0f16ba95805b089da003356c76b4"
+  input-imports = [
+    "github.com/Unknwon/com",
+    "github.com/Unknwon/log",
+    "github.com/go-macaron/i18n",
+    "github.com/go-macaron/pongo2",
+    "github.com/mschoch/blackfriday-text",
+    "github.com/russross/blackfriday",
+    "github.com/urfave/cli",
+    "gopkg.in/ini.v1",
+    "gopkg.in/macaron.v1",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -31,3 +31,4 @@ data
 dist
 vendor
 
+.vscode/settings.json
