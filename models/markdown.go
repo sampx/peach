@@ -25,10 +25,12 @@ var (
 	spaces = []byte("    ")
 )
 
+//MarkdownRender todo docs
 type MarkdownRender struct {
 	blackfriday.Renderer
 }
 
+//BlockCode todo docs
 func (mr *MarkdownRender) BlockCode(out *bytes.Buffer, text []byte, lang string) {
 	var tmp bytes.Buffer
 	mr.Renderer.BlockCode(&tmp, text, lang)

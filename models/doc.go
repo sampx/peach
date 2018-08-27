@@ -31,6 +31,7 @@ func initLangDocs(tocs map[string]*Toc, localRoot, lang string) {
 			continue
 		}
 
+		//解析md文件为js
 		if err := dir.ReloadContent(); err != nil {
 			log.Error("Fail to load doc file: %v", err)
 			continue
@@ -48,6 +49,7 @@ func initLangDocs(tocs map[string]*Toc, localRoot, lang string) {
 		}
 	}
 
+	//解析toc目录下的文件
 	for _, page := range toc.Pages {
 		if !com.IsFile(page.FileName) {
 			continue
@@ -66,13 +68,16 @@ func initDocs(tocs map[string]*Toc, localRoot string) {
 	}
 }
 
+//NewContext todo doc
 func NewContext() {
+	//如果存在html目录，则先删除
 	if com.IsExist(HTMLRoot) {
 		if err := os.RemoveAll(HTMLRoot); err != nil {
 			log.Fatal("Fail to clean up HTMLRoot: %v", err)
 		}
 	}
 
+	//重新加载Docs
 	if err := ReloadDocs(); err != nil {
 		log.Fatal("Fail to init docs: %v", err)
 	}

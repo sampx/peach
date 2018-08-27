@@ -23,6 +23,7 @@ import (
 	"github.com/sampx/peach/pkg/bindata"
 )
 
+//NavbarItem todo doc
 type NavbarItem struct {
 	Icon         string
 	Locale, Link string
@@ -30,27 +31,37 @@ type NavbarItem struct {
 }
 
 const (
-	LOCAL  = "local"
+	//LOCAL todo doc
+	LOCAL = "local"
+	//REMOTE todo doc
 	REMOTE = "remote"
 )
 
+//DocType todo doc
 type DocType string
 
+//IsLocal todo doc
 func (t DocType) IsLocal() bool {
 	return t == LOCAL
 }
 
+//IsRemote todo doc
 func (t DocType) IsRemote() bool {
 	return t == REMOTE
 }
 
 var (
+	//CustomConf todo doc
 	CustomConf = "custom/app.ini"
 
-	AppVer   string
+	//AppVer todo doc
+	AppVer string
+	//ProdMode todo doc
 	ProdMode bool
+	//HTTPPort todo doc
 	HTTPPort int
 
+	//Site todo doc
 	Site struct {
 		Name   string
 		Desc   string
@@ -58,6 +69,7 @@ var (
 		URL    string
 	}
 
+	//Page todo doc
 	Page struct {
 		HasLandingPage bool
 		DocsBaseURL    string
@@ -71,14 +83,17 @@ var (
 		DuoShuoTplPath string
 	}
 
+	//Navbar todo doc
 	Navbar struct {
 		Items []*NavbarItem
 	}
 
+	//Asset todo doc
 	Asset struct {
 		CustomCSS string
 	}
 
+	//Docs todo doc
 	Docs struct {
 		Type      DocType
 		Target    string
@@ -90,6 +105,7 @@ var (
 		Locales map[string][]byte
 	}
 
+	//Extension todo doc
 	Extension struct {
 		EnableEditPage       bool
 		EditPageLinkFormat   string
@@ -102,15 +118,18 @@ var (
 		GABlock              string
 	}
 
+	//Cfg todo doc
 	Cfg *ini.File
 )
 
+//NewContext todo doc
 func NewContext() {
 	log.Prefix = "[Peach]"
 
 	if !com.IsFile(CustomConf) {
 		log.Fatal("No custom configuration found: 'custom/app.ini'")
 	}
+	//包含两部分：bindata中的配置和custom目录中的配置
 	sources := []interface{}{bindata.MustAsset("conf/app.ini"), CustomConf}
 
 	var err error

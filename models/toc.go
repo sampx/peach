@@ -34,6 +34,7 @@ import (
 	"github.com/sampx/peach/pkg/setting"
 )
 
+//Node todo docs
 type Node struct {
 	Name  string // Name in TOC
 	Title string // Name in given language
@@ -47,11 +48,13 @@ type Node struct {
 	LastBuildTime int64
 }
 
+//SetText todo docs
 func (n *Node) SetText(text []byte) {
 	n.text = text
 	n.runes = []rune(string(n.text))
 }
 
+//Text todo docs
 func (n *Node) Text() []byte {
 	return n.text
 }
@@ -59,9 +62,11 @@ func (n *Node) Text() []byte {
 var textRender = blackfridaytext.TextRenderer()
 var (
 	docsRoot = "data/docs"
+	//HTMLRoot ignore
 	HTMLRoot = "data/html"
 )
 
+//通过文件中的头标记，解析为目录树的显示名
 func parseNodeName(name string, data []byte) (string, []byte) {
 	data = bytes.TrimSpace(data)
 	if len(data) < 3 || string(data[:3]) != "---" {
@@ -90,15 +95,18 @@ func parseNodeName(name string, data []byte) (string, []byte) {
 	return title, data[endIdx+3:]
 }
 
+//ReloadContent 重新加载文件内容，解析markdown为js文件
 func (n *Node) ReloadContent() error {
 	data, err := ioutil.ReadFile(n.FileName)
 	if err != nil {
 		return err
 	}
 
+	//解析文件内目录树名称标记，并返回文件内容
 	n.Title, data = parseNodeName(n.Name, data)
 	n.Plain = len(bytes.TrimSpace(data)) == 0
 
+	//如果内容不为空，将md内容解析为node的Text
 	if !n.Plain {
 		n.SetText(bytes.ToLower(blackfriday.Markdown(data, textRender, 0)))
 		data = markdown(data)
@@ -117,6 +125,7 @@ func HTML2JS(data []byte) []byte {
 	return []byte(s)
 }
 
+//GenHTML 生成包含md解析后的html的Javascript脚本
 func (n *Node) GenHTML(data []byte) error {
 	var htmlPath string
 	if setting.Docs.Type.IsLocal() {
@@ -192,6 +201,7 @@ func (t *Toc) GetDoc(name string) (*Node, bool) {
 	return nil, false
 }
 
+//SearchResult todo docs
 type SearchResult struct {
 	Title string
 	Path  string
@@ -212,6 +222,7 @@ func (n *Node) adjustRange(start int) (int, int) {
 	return start, end
 }
 
+//Search todo docs
 func (t *Toc) Search(q string) []*SearchResult {
 	if len(q) == 0 {
 		return nil
@@ -251,16 +262,18 @@ func (t *Toc) Search(q string) []*SearchResult {
 
 var (
 	tocLocker = sync.Mutex{}
-	Tocs      map[string]*Toc
+	//Tocs todo doc
+	Tocs map[string]*Toc
 )
 
+//初始化Toc
 func initToc(localRoot string) (map[string]*Toc, error) {
 	tocPath := path.Join(localRoot, "TOC.ini")
 	if !com.IsFile(tocPath) {
 		return nil, fmt.Errorf("TOC not found: %s", tocPath)
 	}
 
-	// Generate Toc.
+	// Load Toc config file.
 	tocCfg, err := ini.Load(tocPath)
 	if err != nil {
 		return nil, fmt.Errorf("Fail to load TOC.ini: %v", err)
@@ -284,6 +297,7 @@ func initToc(localRoot string) (map[string]*Toc, error) {
 				continue
 			}
 
+			//一个tocNode是一个一级目录，含目录名称和一个目录介绍markdown
 			documentPath := path.Join(dirName, tocCfg.Section(dirName).Key(files[0]).String())
 			dirNode := &Node{
 				Name:         dirName,
@@ -293,6 +307,7 @@ func initToc(localRoot string) (map[string]*Toc, error) {
 			}
 			toc.Nodes = append(toc.Nodes, dirNode)
 
+			//dirNode是文件列表
 			for _, file := range files[1:] {
 				fileName := tocCfg.Section(dirName).Key(file).String()
 				fmt.Println(strings.Repeat(" ", len(dirName))+"|__", fileName)
@@ -326,10 +341,12 @@ func initToc(localRoot string) (map[string]*Toc, error) {
 	return tocs, nil
 }
 
+//ReloadDocs 重新加载Docs
 func ReloadDocs() error {
 	tocLocker.Lock()
 	defer tocLocker.Unlock()
 
+	//远程git仓库或者本地markdown目录
 	localRoot := setting.Docs.Target
 
 	// Fetch docs from remote.
@@ -365,10 +382,12 @@ func ReloadDocs() error {
 		return fmt.Errorf("Documentation not found: %s - %s", setting.Docs.Type, localRoot)
 	}
 
+	//初始化Toc配置文件
 	tocs, err := initToc(localRoot)
 	if err != nil {
 		return fmt.Errorf("initToc: %v", err)
 	}
+	//初始化文档
 	initDocs(tocs, localRoot)
 	Tocs = tocs
 	return reloadProtects(localRoot)

@@ -43,6 +43,7 @@ var Web = cli.Command{
 
 func runWeb(ctx *cli.Context) {
 
+	//AppVer是从peach.go中设置的
 	log.Info("PeachDoc %s", setting.AppVer)
 
 	if ctx.IsSet("config") {
@@ -52,7 +53,7 @@ func runWeb(ctx *cli.Context) {
 
 	//加载配置文件
 	setting.NewContext()
-
+	//加载模型文件
 	models.NewContext()
 
 	m := macaron.New()

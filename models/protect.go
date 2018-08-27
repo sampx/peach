@@ -32,6 +32,7 @@ type protector struct {
 }
 
 var (
+	//Protector todo docs
 	Protector = &protector{
 		Users:     make(map[string]string),
 		Resources: make(map[string]map[string]bool),
